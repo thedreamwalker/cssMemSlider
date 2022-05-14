@@ -1,3 +1,7 @@
+:root {
+  --container-width: 100vw;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,6 +13,7 @@ ul {
 
 p {
   margin: 0;
+  color: rgb(255, 255, 255);
 }
 
 body {
@@ -30,13 +35,22 @@ body {
 .slider {
   width: 50%;
   margin: 0 auto;
-  padding: 20px;
-  margin-top: 50px;
+  margin-top: 5%;
   background-color: rgb(60, 56, 106);
+  border: 1vw solid rgb(60, 56, 106);
+  overflow: hidden;
+}
+
+.slider_img {
+  display: flex;
+  width: 400%;
+  height: calc(var(--container-width) / 3);;
 }
 
 .slider_img img {
-  width: 100%;
+  width: 25%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .slider_info {
@@ -56,4 +70,86 @@ body {
 .slider_controls-button {
   background-color: rgb(251, 151, 206);
   border-radius: 50%;
+}
+
+input[name="slides"] {
+  width: 0;
+  visibility: hidden;
+}
+
+@keyframes oneslide {
+  from {
+    transform: translate(100%, 0);
+  }
+
+  to {
+    transform: translate(0%, 0);
+  }
+}
+
+@keyframes twoslide {
+  from {
+    transform: translate(0%, 0);
+  }
+
+  to {
+    transform: translate(-100%, 0);
+  }
+}
+
+@keyframes threeslide {
+  from {
+    transform: translate(-100%, 0);
+  }
+
+  to {
+    transform: translate(-200%, 0);
+  }
+}
+
+@keyframes fourslide {
+  from {
+    transform: translate(-200%, 0);
+  }
+
+  to {
+    transform: translate(-300%, 0);
+  }
+}
+
+.s-1 {
+  transition: all .7s;
+}
+
+#slide-1:checked ~ .s-1 {
+  margin-left: 0%;
+  /*transform: translate(0%, 0);
+  animation-duration: 3s;
+  animation-name: oneslide;*/
+}
+
+#slide-2:checked ~ .s-1 {
+  margin-left: -25%;
+  /*transform: translate(-100%, 0);
+  animation-duration: 3s;
+  animation-name: twoslide;*/
+}
+
+#slide-3:checked ~ .s-1 {
+  margin-left: -50%;
+  /*transform: translate(-200%, 0);
+  animation-duration: 3s;
+  animation-name: threeslide;*/
+}
+
+#slide-4:checked ~ .s-1 {
+  margin-left: -75%;
+  /*transform: translate(-300%, 0);
+  animation-duration: 3s;
+  animation-name: fourslide;*/
+}
+
+label {
+  width: 50px;
+  height: 50px;
 }
